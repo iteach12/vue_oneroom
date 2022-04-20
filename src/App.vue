@@ -11,30 +11,17 @@
     <a v-for="(menu, i) in menus" :key="i">{{ menu }}</a>
   </div>
 
-  <div>
-    <img src="./assets/room0.jpg" alt="" class="room-img" />
-    <h4 @click="current_modal = true">{{ products[0] }}</h4>
-    <p>{{ price[0] }}</p>
-    <button @click="alert[0]++" ref="one">허위매물신고</button>
-    <span>신고수 : {{ alert[0] }}</span>
-  </div>
-  <div>
-    <img src="./assets/room1.jpg" alt="" class="room-img" />
-    <h4>{{ products[1] }}</h4>
-    <p>{{ price[1] }}</p>
-    <button @click="alert[1]++" ref="two">허위매물신고</button>
-    <span>신고수 : {{ alert[1] }}</span>
-  </div>
-  <div>
-    <img src="./assets/room2.jpg" alt="" class="room-img" />
-    <h4>{{ products[2] }}</h4>
-    <p>{{ price[2] }}</p>
-    <button @click="alert[2]++" ref="three">허위매물신고</button>
-    <span>신고수 : {{ alert[2] }}</span>
+  <div v-for="(item, i) in oneroom" :key="i">
+    <img :src="item.image" alt="" class="room-img" />
+    <h4>{{ item.title }}</h4>
+    <h5>{{ item.content }}</h5>
+    <p>{{ item.price }}원</p>
   </div>
 </template>
 
 <script>
+import info_oneroom from './assets/oneroom';
+
 export default {
   name: 'App',
   data() {
@@ -42,6 +29,7 @@ export default {
       //데이터 보관함.
       //변수 등등.
       //object 자료형으로 {자료이름:자료내용}
+      oneroom: info_oneroom,
       alert: [0, 0, 0],
       products: ['역삼동원룸', '천호동원룸', '마포구원룸'],
       menus: ['Home', 'Shop', 'About'],
